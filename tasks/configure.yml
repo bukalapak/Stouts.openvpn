@@ -51,3 +51,11 @@
     state: present
     reload: true
 
+- name: Allow routing traffic through OpenVPN server
+  iptables:
+    table: nat
+    chain: POSTROUTING
+    out_interface: eth0
+    source: '{{ openvpn_subnet }}'
+    jump: MASQUERADE
+    comment: Ansible NAT Masquerade
