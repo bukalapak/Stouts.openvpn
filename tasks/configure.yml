@@ -6,6 +6,11 @@
     dest: /etc/pam.d/openvpn
   when: openvpn_use_pam == true
 
+- name: Purge all users
+  file:
+    path: "{{ openvpn_etcdir }}/users"
+    state: absent
+
 - name: Configure users
   htpasswd:
     path: "{{ openvpn_etcdir }}/users"
