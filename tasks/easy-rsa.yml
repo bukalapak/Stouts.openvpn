@@ -30,7 +30,7 @@
     dest: "{{ openvpn_etcdir + '/easy-rsa/openssl.cnf' }}"
     state: link
   when:
-    - ansible_distribution_release == 'stretch'
+    - ansible_distribution_release in ['stretch', 'bionic']
     - openvpn_use_system_easyrsa == false
 
 - name: Fix openssl.cnf path on Debian Stretch with system easyrsa
