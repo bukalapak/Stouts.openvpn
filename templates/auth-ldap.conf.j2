@@ -1,6 +1,6 @@
 <LDAP>
   # LDAP server URL
-  URL   ldap://{{ openvpn_ldap_server }}
+  URL   {{ openvpn_ldap_uri }}
 
   # Network timeout (in seconds)
   Timeout   15
@@ -16,8 +16,8 @@
 
   # Client Certificate and key
   # If TLS client authentication is required
-  TLSCertFile /etc/ssl/client-cert.pem
-  TLSKeyFile  /etc/ssl/client-key.pem
+  TLSCertFile {{ openvpn_ldap_crt }}
+  TLSKeyFile  {{ openvpn_ldap_key }}
 </LDAP>
 
 <Authorization>
